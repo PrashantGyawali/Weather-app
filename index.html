@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+     rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+      <script src="index.js" defer></script>
+    <title>Weather App</title>
+</head>
+<body>
+<section class="p-1 m-2 d-flex flex-column" id="inputdiv">
+ <div class="container">
+  
+  <nav class="text-center justify-content-center">
+    <div class="nav nav-pills d-sm-flex justify-content-center" id="nav-tab" role="tablist" style="padding-bottom: 0px; border-bottom: 2px solid black;">
+      <button class="nav-link active h2" id="nav-home-tab" style="margin-bottom: 0px;" data-bs-toggle="tab" data-bs-target="#nameinput" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Name</button>
+      <button class="nav-link   h2" id="nav-profile-tab" style="margin-bottom: 0px;" data-bs-toggle="tab" data-bs-target="#locationinput" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Position</button>
+    </div>
+  </nav>
+  <div class="tab-content text-center" id="nav-tabContent">
+
+<div class="tab-pane fade show active" id="nameinput" role="tabpanel" aria-labelledby="nav-home-tab">
+      <div class="d-flex mb-3 ">
+          <div class="input-group" >
+          <input type="text" class=" btn-lg form-control text-center" id="typingplace" name="typingplace" placeholder="Location"  style="position:relative">
+          <button type="button" class="btn btn-lg btn-secondary dropdown-toggle "   id="getsearchresults" >
+          </button><!--Set its with equal to the width of the upper div to make it look better -->
+         <!-- here will be the queried search results as links maybe? -->
+         <div class="list-group " id="results" >
+
+        </div>
+
+        </div>
+        <!-- <button class="btn btn-dark">Search</button> -->
+      </div>
+  </div>
+
+<div class="tab-pane fade show " id="locationinput" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <div class=" d-md-flex  mb-3">
+        <input type="number" class="btn btn-secondary btn-lg form-control me-1  " id="longitude"  placeholder="Latitude" step="0.001" max="90" min="-90">
+        <input type="number" class="btn btn-secondary btn-lg form-control " id="latitude"  placeholder="Longitude" step="0.001" step="0.001" max="180" min="-180">
+        <button class="btn btn-dark" id="searchbtn">Search</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+  
+
+</div>
+</section>
+</body>
+</html>

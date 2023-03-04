@@ -1,0 +1,21 @@
+@media screen and (max-width:768px) {
+    #searchbtn{
+        width:100%;
+    }
+}
+@media screen and (min-width:768px) {
+    #searchbtn::before{
+        content:'...';
+        color:rgba(0,0,0,0);
+    }
+    #searchbtn::after{
+        content:'...';
+        color:rgba(0,0,0,0);   
+    }
+}
+
+#results{
+    position: absolute;
+    top:48px;
+    width:100%;
+}
