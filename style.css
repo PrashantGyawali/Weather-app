@@ -1,3 +1,12 @@
+:root {
+    --bgcolor:  #28242c;
+    --txtcolor: #ffffff;
+    --bookmarkcolor:#ffffff;
+    --backgroundcolor:#1d1d1d;
+  }
+
+
+
 @media screen and (max-width:768px) {
     #searchbtn{
         width:100%;
@@ -19,3 +28,210 @@
     top:48px;
     width:100%;
 }
+
+
+
+  
+
+
+
+.heightofhead{
+    height:38%;
+}
+
+.heightofbody{
+    height:62%;
+}
+#eachcard{
+    max-height:400px;
+}
+
+@media screen and (max-width:992px) {
+    .heightofbody{
+        margin-bottom: 30px;
+    }
+    .slick-dots{
+        bottom:0px;
+    }
+    @media screen and (max-width:576px) {
+    
+        .heightofhead{
+            height:20%;
+        }
+    
+        .heightofbody{
+            height:80%;
+            margin-bottom: 50px;
+        }
+        #eachcard{
+            height:350px;
+        }
+    
+    }
+}
+
+
+
+/* FOr some reason the css for the slick-dots was not present in the the cdn */
+.slick-dots
+{
+    position: absolute;
+
+    bottom:2rem;
+    display: block;
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+.slick-dots li
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 10px;
+    height: 10px;
+    margin: 0 1px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.slick-dots li button
+{
+    line-height: 0;
+
+    display: block;
+
+    width: 10px;
+    height: 10px;
+    padding: 3px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus
+{
+    outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.slick-dots li button:before
+{
+    font-family: 'slick';
+    font-size: 50px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 12px;
+    height: 10px;
+
+    content: '•';
+    text-align: center;
+
+    opacity: .25;
+    color:     var(--txtcolor);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before
+{
+    opacity: 1;
+    color: rgb(255, 0, 0);
+}
+
+
+
+.textcolor{
+    color: var(--txtcolor);
+}
+
+
+.bookmarkbtn{
+    color:    var(--bookmarkcolor); 
+}
+
+.backgroundcolor{
+    background-color: var(--backgroundcolor);
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 40px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgb(255, 255, 255);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+ 
