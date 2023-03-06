@@ -1,5 +1,21 @@
 const key="f43bfa6d597a49c6bb1145942230203";
 let n=0;
+let bookmarked=[];
+if(localStorage.bookmarked)
+{
+
+  bookmarked=JSON.parse(localStorage.bookmarked);
+
+  // bookmarked.forEach((e)=>{
+  //   let t= getAllresults(e.cityname,e.pos)
+  //   t.then(()=>{document.getElementById(`card${n}bookmark`).click();
+  //   bookmarked.pop();
+  //   localStorage.bookmarked=JSON.stringify(bookmarked);}); 
+  // });
+
+}
+
+
 class weatherday{
   constructor(a,b,c,d,e,f,g,h,i,j,k='none',l='')
   {
@@ -248,334 +264,6 @@ return [a,current];
 
 
 
-
-
-let bookmarked=[];
-      
-
-  var b=[
-    [
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-01",
-            "maxtmp": 27.4,
-            "mintmp": 10.1,
-            "avgtmp": 20.3,
-            "feelslike": "",
-            "humidity": 34,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Wednesday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-02",
-            "maxtmp": 27.2,
-            "mintmp": 9.8,
-            "avgtmp": 20.2,
-            "feelslike": "",
-            "humidity": 32,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Thursday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-03",
-            "maxtmp": 29.4,
-            "mintmp": 12.1,
-            "avgtmp": 22.4,
-            "feelslike": "",
-            "humidity": 32,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Friday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-04",
-            "maxtmp": 30.1,
-            "mintmp": 12.6,
-            "avgtmp": 23.1,
-            "feelslike": "",
-            "humidity": 31,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Saturday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-05",
-            "maxtmp": 30.5,
-            "mintmp": 12.8,
-            "avgtmp": 23.3,
-            "feelslike": "",
-            "humidity": 30,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Sunday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-06",
-            "maxtmp": 29.1,
-            "mintmp": 12.4,
-            "avgtmp": 22.2,
-            "feelslike": 19,
-            "humidity": 26,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Monday",
-            "daynight": 0,
-            "time": "19:00"
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-07",
-            "maxtmp": 27.1,
-            "mintmp": 10.4,
-            "avgtmp": 17.8,
-            "feelslike": "",
-            "humidity": 24,
-            "condition": "Cloudy",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/119.png",
-            "day": "Tuesday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-08",
-            "maxtmp": 27.8,
-            "mintmp": 12.8,
-            "avgtmp": 19,
-            "feelslike": "",
-            "humidity": 22,
-            "condition": "Partly cloudy",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
-            "day": "Wednesday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-09",
-            "maxtmp": 30.5,
-            "mintmp": 11.1,
-            "avgtmp": 19,
-            "feelslike": "",
-            "humidity": 22,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Thursday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-10",
-            "maxtmp": 31.1,
-            "mintmp": 11.8,
-            "avgtmp": 19.7,
-            "feelslike": "",
-            "humidity": 20,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Friday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-11",
-            "maxtmp": 29.3,
-            "mintmp": 13.4,
-            "avgtmp": 20.1,
-            "feelslike": "",
-            "humidity": 21,
-            "condition": "Partly cloudy",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
-            "day": "Saturday",
-            "daynight": "none",
-            "time": ""
-        }
-    ],
-    5,
-    "27.72 85.32"
-]
-
-let a=[
-    [
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-01",
-            "maxtmp": 27.4,
-            "mintmp": 10.1,
-            "avgtmp": 20.3,
-            "feelslike": "",
-            "humidity": 34,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Wednesday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-02",
-            "maxtmp": 27.2,
-            "mintmp": 9.8,
-            "avgtmp": 20.2,
-            "feelslike": "",
-            "humidity": 32,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Thursday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-03",
-            "maxtmp": 29.4,
-            "mintmp": 12.1,
-            "avgtmp": 22.4,
-            "feelslike": "",
-            "humidity": 32,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Friday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-04",
-            "maxtmp": 30.1,
-            "mintmp": 12.6,
-            "avgtmp": 23.1,
-            "feelslike": "",
-            "humidity": 31,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Saturday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-05",
-            "maxtmp": 30.5,
-            "mintmp": 12.8,
-            "avgtmp": 23.3,
-            "feelslike": "",
-            "humidity": 30,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Sunday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-06",
-            "maxtmp": 29.1,
-            "mintmp": 12.4,
-            "avgtmp": 22.2,
-            "feelslike": 19,
-            "humidity": 26,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Monday",
-            "daynight": 0,
-            "time": "19:00"
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-07",
-            "maxtmp": 27.1,
-            "mintmp": 10.4,
-            "avgtmp": 17.8,
-            "feelslike": "",
-            "humidity": 24,
-            "condition": "Cloudy",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/119.png",
-            "day": "Tuesday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-08",
-            "maxtmp": 27.8,
-            "mintmp": 12.8,
-            "avgtmp": 19,
-            "feelslike": "",
-            "humidity": 22,
-            "condition": "Partly cloudy",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
-            "day": "Wednesday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-09",
-            "maxtmp": 30.5,
-            "mintmp": 11.1,
-            "avgtmp": 19,
-            "feelslike": "",
-            "humidity": 22,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Thursday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-10",
-            "maxtmp": 31.1,
-            "mintmp": 11.8,
-            "avgtmp": 19.7,
-            "feelslike": "",
-            "humidity": 20,
-            "condition": "Sunny",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-            "day": "Friday",
-            "daynight": "none",
-            "time": ""
-        },
-        {
-            "city": "Kathmandu",
-            "date": "2023-03-11",
-            "maxtmp": 29.3,
-            "mintmp": 13.4,
-            "avgtmp": 20.1,
-            "feelslike": "",
-            "humidity": 21,
-            "condition": "Partly cloudy",
-            "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
-            "day": "Saturday",
-            "daynight": "none",
-            "time": ""
-        }
-    ],
-    5,
-    "27.72 85.32"
-];
-
-
 function createHTML(a)
 {
 
@@ -609,7 +297,7 @@ function createHTML(a)
             <div class="container">
                 <div class="text-center text-danger mt-3 h3 position-relative" id="cityname">
                     ${e.city}
-                    <button class="rounded-circle position-absolute  border-0  bookmarkbtn" style="left:100%; transform: translateX(-50%); background:none;" onclick="togglebookmark('#eachcitycard${n}','${e.city}')"><i class="h3 bi bi-pin-angle bookmarkcolor text-end"></i></button>
+                    <button class="rounded-circle position-absolute  border-0  bookmarkbtn" style="left:100%; transform: translateX(-50%); background:none;" id="card${n}bookmark" onclick="togglebookmark('#eachcitycard${n}','${e.city}','${a[2]}')"><i class="h3 bi bi-pin-angle bookmarkcolor text-end"></i></button>
                 </div>
   
             </div>
@@ -654,6 +342,8 @@ function createHTML(a)
           slidesToShow: 1,
         });
 
+        // presentresults.push({});
+        //----------------WIP make it so that duplicate fetch requests will be not be registered
     }
 
   return fn;
@@ -664,19 +354,22 @@ function createHTML(a)
 
 
 //localStorage.bookmarked
-function togglebookmark(e,cityname)
+function togglebookmark(e,cityname,pos)
 {
   let x=$(e).find('.bookmarkbtn').find('i');
-  if(x.hasClass('bi-pin-angle'))
+
+  if(x.hasClass('bi-pin-angle')&&bookmarked.indexOf({'cityname':cityname, 'pos':pos})=='-1')
   {
    x.addClass('bi-pin-angle-fill').removeClass('bi-pin-angle');
-   bookmarked.push(cityname);
+   bookmarked.push({'cityname':cityname, 'pos':pos});
    localStorage.bookmarked=JSON.stringify(bookmarked);
+  //  console.log(localStorage.bookmarked, bookmarked)
   }
   else{
     x.removeClass('bi-pin-angle-fill').addClass('bi-pin-angle');
-    bookmarked.splice(bookmarked.indexOf(cityname),1);
+    bookmarked.splice(bookmarked.indexOf({'cityname':cityname, 'pos':pos}),1);
     localStorage.bookmarked=JSON.stringify(bookmarked);
+    // console.log(localStorage.bookmarked, bookmarked)
   }
 }
 
