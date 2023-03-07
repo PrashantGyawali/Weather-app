@@ -8,15 +8,18 @@ let presentresults=[];
 
 if(localStorage.bookmarked)
 {
-  $('#maindiv').html(`<div class="text-center container h5 text-danger w-auto" id="bookmarkloading">Loading Bookmarks...</div>`); 
+  
 
   bookmarked=JSON.parse(localStorage.bookmarked);
 
+  if(bookmarked.length>0)
+ {$('#maindiv').html(`<div class="text-center container h5 text-danger w-auto" id="bookmarkloading">Loading Bookmarks...</div>`);  
   bookmarked.forEach((e)=>{
     let t= getAllresults(e.cityname,e.pos,true);
-
-    t.then(()=>{ $( "#bookmarkloading" ).remove();})
+    t.then(()=>{$( "#bookmarkloading" ).remove();})
   });
+}
+
 
 
     localStorage.bookmarked=JSON.stringify(bookmarked);
@@ -293,24 +296,34 @@ return [a,current];
 
 function createHTML(a,booked)
 {
-
+console.log(a);
   let lat=(a[2]).slice(0,5);
   let lon=(a[2]).slice(5,11);
   let filled='';
+  let daynightbg=''
   if(booked)
   {
     filled='-fill';
   }
 
+  if(a[0][a[1]].daynight==0)
+  {
+   daynightbg=`style="background-image:url('./images/night.jpg'); background-size:cover;"`
+  }
+  else{
+    daynightbg=`style="background-image:url('./iamges/day.jpg'); background-size:cover;"`
+  }
+
   function fn()
   {
     n++;
-    $("#maindiv").prepend(`<div class="container col-6 mx-1 my-3 " id="eachcitycard${n}" style="min-width:300px; max-width:480px; border:none" ></div>`);
+    $("#maindiv").prepend(`<div class="container col-6 mx-1 my-3 " id="eachcitycard${n}" style="min-width:300px; max-width:480px; border:none"></div>`);
     a[0].forEach(
      (e)=> {
   
       let temp =" ";
       let title='1111111111';
+
       if (e.feelslike=='')
       {
         temp="opacity:0;";
@@ -322,10 +335,11 @@ function createHTML(a,booked)
 
 
       $(`#eachcitycard${n}`).append(
-        `<span ${title} class="text-center"><div class="card eachcard textcolor" style=" border-radius: 16px; border:2px solid black; background-color: var(--bgcolor);
+        `<span ${title} class="text-center"><div class="card eachcard textcolor" style=" border-radius: 16px; border:3px solid black; background-color: var(--bgcolor);
         ">
+
+        <div class="container heightofhead" ${daynightbg} >    
         <span class="textcolor" style="font-weight:600; ${temp};">${title.slice(7,-1)}</span>
-        <div class="container heightofhead " >    
             <div class="container">
                 <div class="text-center text-danger mt-3 h3 position-relative" id="cityname">
                     ${e.city}
