@@ -57,7 +57,7 @@ $('#getsearchresults').click(
 
 async  function getsearchresults(name)
 {
-    let url=`http://api.weatherapi.com/v1/search.json?key=${key}&q=${name}`;
+    let url=`https://api.weatherapi.com/v1/search.json?key=${key}&q=${name}`;
     
     if(!pastsearchresults[`${name}`])  //If not a duplicate then fetch
     {
@@ -172,7 +172,7 @@ for(let j=(0);j<(6);j++)
 // Current
 async function  get_current (cityname)
 {
-    let url=`http://api.weatherapi.com/v1/current.json?key=f43bfa6d597a49c6bb1145942230203&q=${cityname}`;  
+    let url=`https://api.weatherapi.com/v1/current.json?key=f43bfa6d597a49c6bb1145942230203&q=${cityname}`;  
     try {
         const response= await fetch(url);
         const data= await response.json();
@@ -212,7 +212,7 @@ async function get_history(cityname)
   const msSinceEpoch = Math.floor((new Date()).getTime()/1000);
 let today = msSinceEpoch ;
 let ago=today-5*24*60*60;
-let url=`http://api.weatherapi.com/v1/history.json?key=f43bfa6d597a49c6bb1145942230203&q=${cityname}&unixdt=${ago}&unixend_dt=${today}`;
+let url=`https://api.weatherapi.com/v1/history.json?key=f43bfa6d597a49c6bb1145942230203&q=${cityname}&unixdt=${ago}&unixend_dt=${today}`;
     
     try {
         const response= await fetch(url);
@@ -230,7 +230,7 @@ let url=`http://api.weatherapi.com/v1/history.json?key=f43bfa6d597a49c6bb1145942
 // Forecast
 async function get_forecast (cityname)
 {
-    let url=`http://api.weatherapi.com/v1/forecast.json?key=f43bfa6d597a49c6bb1145942230203&q=${cityname}&days=8`;
+    let url=`https://api.weatherapi.com/v1/forecast.json?key=f43bfa6d597a49c6bb1145942230203&q=${cityname}&days=8`;
     
     
     try {
