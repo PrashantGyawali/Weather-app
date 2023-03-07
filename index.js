@@ -8,15 +8,17 @@ let presentresults=[];
 
 if(localStorage.bookmarked)
 {
-  $('#maindiv').html(`<div class="text-center container h5 text-danger w-auto" id="bookmarkloading">Loading Bookmarks...</button>`); 
+  $('#maindiv').html(`<div class="text-center container h5 text-danger w-auto" id="bookmarkloading">Loading Bookmarks...</div>`); 
 
   bookmarked=JSON.parse(localStorage.bookmarked);
 
   bookmarked.forEach((e)=>{
-    let t= getAllresults(e.cityname,e.pos,true)
+    let t= getAllresults(e.cityname,e.pos,true);
+
+    t.then(()=>{ $( "#bookmarkloading" ).remove();})
   });
 
-$( "#bookmarkloading" ).remove();
+
     localStorage.bookmarked=JSON.stringify(bookmarked);
     console.log(localStorage.bookmarked,bookmarked);
 }
@@ -112,6 +114,10 @@ async  function getsearchresults(name)
 
 async function getAllresults(cityname,p,booked)
 {
+  if(!booked)
+  {
+    $('#maindiv').prepend(`<div class="h5 text-danger text-center w-25" id="Loadingdata">Loading Data...</div>`); 
+  }
   let tmp=0;
   let index=0;
   presentresults.forEach((e,i)=>{if(e[2]==p){tmp=1; index=i}});
@@ -125,8 +131,11 @@ async function getAllresults(cityname,p,booked)
   finalarr=[...finalarr,p];
 
   presentresults.push(finalarr);   
+
    let create=createHTML(finalarr,booked);
-   create();
+
+   if(!booked){$( "#Loadingdata" ).remove();}
+    create();
   }
   else{
     console.log('Nope result already here');
@@ -140,6 +149,7 @@ async function getAllresults(cityname,p,booked)
     }
   }
 }
+
 
 
 
@@ -203,7 +213,6 @@ function currentdaycreator(data) {
     return arrayofdays;
 }
 }
-
 
 
 //Past
@@ -273,9 +282,7 @@ for(let i=0; i<a.length;i++)
 
         }
 
-        }
-        
-    
+        }   
     }
    
 }
