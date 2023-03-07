@@ -1,18 +1,24 @@
 const key="f43bfa6d597a49c6bb1145942230203";
 let n=0;
 let bookmarked=[];
+let pastsearchresults=[];
+let presentresults=[];
+
+
+
 if(localStorage.bookmarked)
 {
+  $('#maindiv').html(`<div class="text-center container h5 text-danger w-auto" id="bookmarkloading">Loading Bookmarks...</button>`); 
 
   bookmarked=JSON.parse(localStorage.bookmarked);
 
-  // bookmarked.forEach((e)=>{
-  //   let t= getAllresults(e.cityname,e.pos)
-  //   t.then(()=>{document.getElementById(`card${n}bookmark`).click();
-  //   bookmarked.pop();
-  //   localStorage.bookmarked=JSON.stringify(bookmarked);}); 
-  // });
+  bookmarked.forEach((e)=>{
+    let t= getAllresults(e.cityname,e.pos,true)
+  });
 
+$( "#bookmarkloading" ).remove();
+    localStorage.bookmarked=JSON.stringify(bookmarked);
+    console.log(localStorage.bookmarked,bookmarked);
 }
 
 
@@ -34,8 +40,6 @@ class weatherday{
   }
 }
 
-let pastsearchresults=[];
-let presentresults=[];
 
 
 
@@ -91,7 +95,7 @@ async  function getsearchresults(name)
               let t=this.innerText;
               let p=this.dataset.position;
               $('#typingplace').val(t);
-              getAllresults(t,p);
+              getAllresults(t,p,false);
               $('#results').html('');
             }
             )
@@ -106,8 +110,13 @@ async  function getsearchresults(name)
 
 
 
-async function getAllresults(cityname,p)
+async function getAllresults(cityname,p,booked)
 {
+  let tmp=0;
+  let index=0;
+  presentresults.forEach((e,i)=>{if(e[2]==p){tmp=1; index=i}});
+  if(tmp==0)
+  {
   let forecasts= await get_forecast(cityname);
   let history= await get_history(cityname);
   let current= await get_current(cityname);
@@ -115,10 +124,21 @@ async function getAllresults(cityname,p)
   finalarr= await setnewarr(finalarr);
   finalarr=[...finalarr,p];
 
-
   presentresults.push(finalarr);   
-   let create=createHTML(finalarr);
+   let create=createHTML(finalarr,booked);
    create();
+  }
+  else{
+    console.log('Nope result already here');
+    let m=$(`#eachcitycard${index+1}`);
+    move(m);
+      function move(i){
+        setTimeout(()=> {$("#maindiv").prepend(i);},0);
+        console.log(i);
+        i.remove();
+        console.log(i);
+    }
+  }
 }
 
 
@@ -264,11 +284,16 @@ return [a,current];
 
 
 
-function createHTML(a)
+function createHTML(a,booked)
 {
 
   let lat=(a[2]).slice(0,5);
   let lon=(a[2]).slice(5,11);
+  let filled='';
+  if(booked)
+  {
+    filled='-fill';
+  }
 
   function fn()
   {
@@ -297,7 +322,7 @@ function createHTML(a)
             <div class="container">
                 <div class="text-center text-danger mt-3 h3 position-relative" id="cityname">
                     ${e.city}
-                    <button class="rounded-circle position-absolute  border-0  bookmarkbtn" style="left:100%; transform: translateX(-50%); background:none;" id="card${n}bookmark" onclick="togglebookmark('#eachcitycard${n}','${e.city}','${a[2]}')"><i class="h3 bi bi-pin-angle bookmarkcolor text-end"></i></button>
+                    <button class="rounded-circle position-absolute  border-0  bookmarkbtn" style="left:100%; transform: translateX(-50%); background:none;" id="card${n}bookmark" onclick="togglebookmark('#eachcitycard${n}','${e.city}','${a[2]}')"><i class="h3 bi bi-pin-angle${filled} bookmarkcolor text-end"></i></button>
                 </div>
   
             </div>
@@ -338,12 +363,9 @@ function createHTML(a)
           adaptiveHeight: false,
           dots:true,
           initialSlide:a[1],
-          // responsive:true,
           slidesToShow: 1,
         });
 
-        // presentresults.push({});
-        //----------------WIP make it so that duplicate fetch requests will be not be registered
     }
 
   return fn;
@@ -358,18 +380,18 @@ function togglebookmark(e,cityname,pos)
 {
   let x=$(e).find('.bookmarkbtn').find('i');
 
-  if(x.hasClass('bi-pin-angle')&&bookmarked.indexOf({'cityname':cityname, 'pos':pos})=='-1')
+  if(x.hasClass('bi-pin-angle') && bookmarked.filter((m)=>{return m.cityname==cityname}).length==0)
   {
    x.addClass('bi-pin-angle-fill').removeClass('bi-pin-angle');
    bookmarked.push({'cityname':cityname, 'pos':pos});
    localStorage.bookmarked=JSON.stringify(bookmarked);
-  //  console.log(localStorage.bookmarked, bookmarked)
+   console.log(localStorage.bookmarked, bookmarked)
   }
   else{
     x.removeClass('bi-pin-angle-fill').addClass('bi-pin-angle');
     bookmarked.splice(bookmarked.indexOf({'cityname':cityname, 'pos':pos}),1);
     localStorage.bookmarked=JSON.stringify(bookmarked);
-    // console.log(localStorage.bookmarked, bookmarked)
+    console.log(localStorage.bookmarked, bookmarked)
   }
 }
 
