@@ -346,7 +346,7 @@ function createHTML(a,booked)
             <div class="container">
                 <div class="text-center text-danger mt-3 h3 position-relative" id="cityname">
                     ${e.city}
-                    <button class="rounded-circle position-absolute  border-0  bookmarkbtn" style="left:100%; transform: translateX(-50%); background:none;" id="card${n}bookmark" onclick="togglebookmark('#eachcitycard${n}','${e.city}','${a[2]}')"><i class="h3 bi bi-pin-angle${filled} bookmarkcolor text-end"></i></button>
+                    <button class="rounded-circle position-absolute  border-0  bookmarkbtn" style="left:100%; transform: translateX(-50%); background:none; z-index:10;" id="card${n}bookmark" onclick="togglebookmark('#eachcitycard${n}','${e.city}','${a[2]}')"><i class="h3 bi bi-pin-angle${filled} bookmarkcolor text-end"></i></button>
                 </div>
   
             </div>
