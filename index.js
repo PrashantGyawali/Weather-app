@@ -161,7 +161,7 @@ async function getAllresults(cityname,p,booked)
 function dayscreator(data)
 {
   let arrayofdays=[];
-for(let j=(0);j<(6);j++)
+for(let j=(0);j<( data.forecast.forecastday.length-1);j++)
   { 
       arrayofdays.push(new weatherday(
       data.location.name,
@@ -223,12 +223,13 @@ async function get_history(cityname)
 {
   const msSinceEpoch = Math.floor((new Date()).getTime()/1000);
 let today = msSinceEpoch ;
-let ago=today-5*24*60*60;
+let ago=today-6*24*60*60;
 let url=`https://api.weatherapi.com/v1/history.json?key=f43bfa6d597a49c6bb1145942230203&q=${cityname}&unixdt=${ago}&unixend_dt=${today}`;
     
     try {
         const response= await fetch(url);
         const data= await response.json();
+        console.log(data);
         let temp= dayscreator(data);
         return  temp;
       } 
@@ -311,7 +312,7 @@ console.log(a);
    daynightbg=`style="background-image:url('./images/night.jpg'); background-size:cover;"`
   }
   else{
-    daynightbg=`style="background-image:url('./iamges/day.jpg'); background-size:cover;"`
+    daynightbg=`style="background-image:url('./images/day.jpg'); background-size:cover;"`
   }
 
   function fn()
