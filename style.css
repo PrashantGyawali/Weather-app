@@ -23,14 +23,23 @@
     }
 }
 
-#results{
+#results1{
     position: absolute;
     top:48px;
     width:100%;
 }
+#results2{
+    position: absolute;
+    top:100%;
+    width:100%;
+}
 
-
-
+@media screen and (max-width:768px) 
+{
+#getsearchresultsbypos{
+width:100%;
+}
+}
   
 
 

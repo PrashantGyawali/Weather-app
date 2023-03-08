@@ -53,14 +53,23 @@ $('#getsearchresults').click(
     {
       $('#results').html(`<button class="list-group-item pe-5">Searching...</button>`); 
       let t=$('#typingplace').val()
-        getsearchresults(t);
+        getsearchresults(t,1);
 
+    }
+);
+
+$('#getsearchresultsbypos').click(
+  function()
+    {
+      $('#results').html(`<button class="list-group-item pe-5">Searching...</button>`); 
+      let t=$('#latitude').val()+","+$('#longitude').val()
+        getsearchresults(t,2);
     }
 );
   
 
 
-async  function getsearchresults(name)
+async  function getsearchresults(name,type)
 {
     let url=`https://api.weatherapi.com/v1/search.json?key=${key}&q=${name}`;
     
@@ -73,8 +82,7 @@ async  function getsearchresults(name)
         console.log('Search Results',data);
         let temp={[`${name}`]:[...data]};
         pastsearchresults={...pastsearchresults,...temp};
-        console.log(pastsearchresults)
-        updateSearchList(data);
+        updateSearchList(data,type);
       } 
       catch (error) {
         // TypeError: Failed to fetch
@@ -83,17 +91,17 @@ async  function getsearchresults(name)
     }
 
     else{ // If the query is a duplicate request then dont bother fetching again
-      updateSearchList(pastsearchresults[`${name}`]);
+      updateSearchList(pastsearchresults[`${name}`],type);
     }
 
 
-      function updateSearchList(results) //Fetch the data and create the list
+      function updateSearchList(results,typeno) //Fetch the data and create the list
       {
-        $('#results').html('');
+        $(`#results${typeno}`).html('');
         results.forEach(
           (arr)=>
           {
-            $('#results').append(`<button class="list-group-item resultItem pe-5" style="z-index=100" data-position="${arr.lat} ${arr.lon}">${arr.name},  ${arr.country}</button>`); 
+            $(`#results${typeno}`).append(`<button class="list-group-item resultItem pe-5" style="z-index=100" data-position="${arr.lat} ${arr.lon}">${arr.name},  ${arr.country}</button>`); 
           });
           $('.resultItem').click(
             function(){
@@ -101,7 +109,7 @@ async  function getsearchresults(name)
               let p=this.dataset.position;
               $('#typingplace').val(t);
               getAllresults(t,p,false);
-              $('#results').html('');
+              $(`#results${typeno}`).html('');
             }
             )
       }

@@ -44,9 +44,8 @@
           <div class="input-group" >
           <input type="text" class=" btn-lg form-control text-center" id="typingplace" name="typingplace" placeholder="Location"  style="position:relative; background-color: var(--bgcolor); color: var(--txtcolor);">
           <button type="button" class="btn btn-lg btn-secondary dropdown-toggle "   id="getsearchresults" >
-          </button><!--Set its with equal to the width of the upper div to make it look better -->
-         <!-- here will be the queried search results as links maybe? -->
-         <div class="list-group " id="results" style="z-index: 100;" >
+          </button>
+         <div class="list-group " id="results1" style="z-index: 100;" >
 
         </div>
 
@@ -56,10 +55,11 @@
   </div>
 
 <div class="tab-pane fade show " id="locationinput" role="tabpanel" aria-labelledby="nav-profile-tab" style="z-index: 100;">
-    <div class=" d-md-flex  mb-3">
-        <input type="number" class="btn btn-secondary btn-lg form-control me-1  " id="longitude"  placeholder="Latitude" step="0.001" max="90" min="-90">
-        <input type="number" class="btn btn-secondary btn-lg form-control " id="latitude"  placeholder="Longitude" step="0.001" step="0.001" max="180" min="-180">
-        <button class="btn btn-dark" id="searchbtn">Search</button>
+    <div class=" d-md-flex  mb-3" style="position: relative;">
+        <input type="number" class="btn btn-secondary btn-lg form-control me-1  " id="longitude"  placeholder="Latitude" step="0.001" max="90" min="-90" value="-74" required> 
+        <input type="number" class="btn btn-secondary btn-lg form-control " id="latitude"  placeholder="Longitude" step="0.001" step="0.001" max="180" min="-180" value="41" required>
+        <button type="submit" class="btn btn-dark" id="getsearchresultsbypos">Search</button>
+        <div class="list-group " id="results2" style="z-index: 100;" ></div>
     </div>
   </div>
 </div>
