@@ -20,10 +20,7 @@ if(localStorage.bookmarked)
   });
 }
 
-
-
-    localStorage.bookmarked=JSON.stringify(bookmarked);
-    console.log(localStorage.bookmarked,bookmarked);
+localStorage.bookmarked=JSON.stringify(bookmarked);
 }
 
 
@@ -79,7 +76,6 @@ async  function getsearchresults(name,type)
        $('#searchresults').html('');
         const response= await fetch(url);
         const data= await response.json();
-        console.log('Search Results',data);
         let temp={[`${name}`]:[...data]};
         pastsearchresults={...pastsearchresults,...temp};
         updateSearchList(data,type);
@@ -154,9 +150,8 @@ async function getAllresults(cityname,p,booked)
     move(m);
       function move(i){
         setTimeout(()=> {$("#maindiv").prepend(i);},0);
-        console.log(i);
         i.remove();
-        console.log(i);
+        $( "#Loadingdata" ).remove();
     }
   }
 }
@@ -237,7 +232,6 @@ let url=`https://api.weatherapi.com/v1/history.json?key=f43bfa6d597a49c6bb114594
     try {
         const response= await fetch(url);
         const data= await response.json();
-        console.log(data);
         let temp= dayscreator(data);
         return  temp;
       } 
@@ -305,7 +299,7 @@ return [a,current];
 
 function createHTML(a,booked)
 {
-console.log(a);
+
   let lat=(a[2]).slice(0,5);
   let lon=(a[2]).slice(5,11);
   let filled='';
@@ -415,13 +409,13 @@ function togglebookmark(e,cityname,pos)
    x.addClass('bi-pin-angle-fill').removeClass('bi-pin-angle');
    bookmarked.push({'cityname':cityname, 'pos':pos});
    localStorage.bookmarked=JSON.stringify(bookmarked);
-   console.log(localStorage.bookmarked, bookmarked)
+
   }
   else{
     x.removeClass('bi-pin-angle-fill').addClass('bi-pin-angle');
     bookmarked.splice(bookmarked.indexOf({'cityname':cityname, 'pos':pos}),1);
     localStorage.bookmarked=JSON.stringify(bookmarked);
-    console.log(localStorage.bookmarked, bookmarked)
+
   }
 }
 
