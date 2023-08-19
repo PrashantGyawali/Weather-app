@@ -245,13 +245,16 @@ let url=`https://api.weatherapi.com/v1/history.json?key=f43bfa6d597a49c6bb114594
 // Forecast
 async function get_forecast (cityname)
 {
-    let url=`https://api.weatherapi.com/v1/forecast.json?key=f43bfa6d597a49c6bb1145942230203&q=${cityname}&days=8`;
+    let url=`https://api.weatherapi.com/v1/forecast.json?key=059ba11179914ed6a33161154231908&q=${cityname}&days=10`;
     
     
     try {
+      console.log(url);
         const response= await fetch(url);
         const data= await response.json();
+        console.log(data);
         let temp= dayscreator(data);
+        console.log(temp);
         return  temp;
       } 
       catch (error) {
